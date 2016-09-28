@@ -67,7 +67,9 @@ module.exports = generators.Base.extend({
           "react": "^15.3.1",
           "react-addons-test-utils": "^15.3.1",
           "react-dom": "^15.3.1",
-          "webpack": "^1.13.2"
+          "webpack": "^1.13.2",
+          "babel-loader": "^6.2.3",
+          "mocha": "^2.4.5"
         },
         scripts: {
           "clean": "rimraf lib dist",

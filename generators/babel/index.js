@@ -32,7 +32,11 @@ module.exports = generators.Base.extend({
           "babel-eslint": "^6.1.2",
           "babel-loader": "^6.2.5",
           "babel-preset-airbnb": "^2.0.0",
-          "cross-env": "^2.0.1"
+          "cross-env": "^2.0.1",
+          "babel-plugin-add-module-exports": "^0.1.2",
+          "babel-plugin-react-transform": "^2.0.0",
+          "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
+          "babel-plugin-transform-runtime": "^6.5.2"
         },
         scripts: {
           "clean": "rimraf lib dist",
@@ -42,7 +46,7 @@ module.exports = generators.Base.extend({
         }
       });
 
-      if (this.props.umd) {
+      if (this.options.umd) {
         extend(pkg.scripts, {
           "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./index.js dist/" + this.props.name + ".js",
           "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./index.js dist/" + this.props.name + ".min.js",

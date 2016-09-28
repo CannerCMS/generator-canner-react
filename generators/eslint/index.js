@@ -15,6 +15,11 @@ module.exports = generators.Base.extend({
   },
 
   writing: function() {
+    this.fs.copy(
+      this.templatePath('eslintrc.js'),
+      this.destinationPath(this.options.generateInto, '.eslintrc.js')
+    );
+
     var pkg = this.fs.readJSON(
       this.destinationPath(this.options.generateInto, 'package.json'), {}
     );

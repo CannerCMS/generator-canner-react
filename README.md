@@ -18,7 +18,7 @@ yo canner-react
 
 ## License
 
-MIT © [chilijung]()
+MIT © [chilijung](https://github.com/chilijung)
 
 
 [npm-image]: https://badge.fury.io/js/generator-canner-react.svg

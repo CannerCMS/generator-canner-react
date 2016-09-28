@@ -1,3 +1,15 @@
 {
-  "presets": ["airbnb"]
+  "presets": ["airbnb"],
+  "env": {
+    "development": {
+      "plugins": [
+        "add-module-exports"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
 }

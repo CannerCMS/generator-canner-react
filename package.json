@@ -54,7 +54,6 @@
   "repository": "canner/generator-canner-react",
   "license": "MIT",
   "pre-commit": [
-    "lint",
-    "test"
+    "lint"
   ]
 }

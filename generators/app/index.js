@@ -18,14 +18,6 @@ module.exports = generators.Base.extend({
       desc: 'Include travis config'
     });
 
-    // babel is always true in this generator
-    this.options.babel = true;
-    // this.option('babel', {
-    //   type: Boolean,
-    //   required: true,
-    //   desc: 'Compile ES2015 using Babel'
-    // });
-
     this.option('coveralls', {
       type: Boolean,
       required: false,
@@ -153,7 +145,15 @@ module.exports = generators.Base.extend({
         name: 'includeCoveralls',
         type: 'confirm',
         message: 'Send coverage reports to coveralls',
-        when: this.options.coveralls === undefined
+        when: this.options.coveralls === undefined,
+        default: false
+      }, {
+        name: 'webpackExample',
+        type: 'confirm',
+        message: 'Build example folder for the project',
+        when: this.options.webpackExample,
+        default: true,
+        store: true
       }];
 
       return this.prompt(prompts).then(function(props) {
@@ -254,16 +254,15 @@ module.exports = generators.Base.extend({
       local: require.resolve('../boilerplate')
     });
 
-    // if (this.options.webpackExample) {
-    //   this.composeWith('node:webpackExample', {
-    //     options: {
-    //       babel: this.props.babel,
-    //       projectRoot: this.options.projectRoot
-    //     }
-    //   }, {
-    //     local: require.resolve('../webpackExample')
-    //   });
-    // }
+    if (this.options.webpackExample) {
+      this.composeWith('node:webpackExample', {
+        options: {
+          projectRoot: this.options.projectRoot
+        }
+      }, {
+        local: require.resolve('../webpackExample')
+      });
+    }
 
     if (this.options.license && !this.pkg.license) {
       this.composeWith('license', {
