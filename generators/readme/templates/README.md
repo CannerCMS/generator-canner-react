@@ -1,4 +1,5 @@
-# <%= projectName %> [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]<%
+# <%= projectName %> [![NPM version][npm-image]][npm-url] <%
+if (travis) { %>[![Build Status][travis-image]][travis-url]<% } -%> [![Dependency Status][daviddm-image]][daviddm-url]<%
 if (includeCoveralls) { %> [![Coverage percentage][coveralls-image]][coveralls-url]<% } -%>
 
 > <%= description %>

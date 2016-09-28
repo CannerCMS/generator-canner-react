@@ -148,6 +148,12 @@ module.exports = generators.Base.extend({
         when: this.options.coveralls === undefined,
         default: false
       }, {
+        name: 'travis',
+        type: 'confirm',
+        message: 'Add travis badge',
+        when: this.options.travis === undefined,
+        default: false
+      }, {
         name: 'webpackExample',
         type: 'confirm',
         message: 'Build example folder for the project',
@@ -284,6 +290,7 @@ module.exports = generators.Base.extend({
           githubAccount: this.props.githubAccount,
           authorName: this.props.authorName,
           authorUrl: this.props.authorUrl,
+          travis: this.props.travis,
           coveralls: this.props.includeCoveralls,
           content: this.options.readme
         }
