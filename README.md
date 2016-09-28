@@ -1,6 +1,24 @@
 # generator-canner-react [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > A generator for react projects
 
+*Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files.*
+
+That'll generate a project with all the common tools setup. This includes:
+
+- Filled `package.json` file
+- [webpack](https://webpack.github.io/) 
+- [Babel](https://babeljs.io/) ES2015 transpiler
+- [editorconfig](http://editorconfig.org/)
+- [mocha](http://mochajs.org/) unit test
+- [ESLint](http://eslint.org/) linting and code style checking
+- [Istanbul](https://gotwarlost.github.io/istanbul/) code coverage (optionally tracked on [Coveralls](https://coveralls.io/))
+- [Travis CI](https://travis-ci.org/) continuous integration (optional)
+- [License](https://spdx.org/licenses/)
+- README
+
+... and more!
+
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-canner-react using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
