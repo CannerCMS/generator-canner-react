@@ -21,6 +21,15 @@ var <%= safeProjectName %> = require('<%= projectName %>');
 <% } else { -%>
 <%= content %>
 <% } -%>
+
+<% if (example) { -%>
+## Start example server
+
+```
+node devServer.js
+```
+<% } -%>
+
 ## License
 
 <%= license %> © [<%= author.name %>](<%= author.url %>)

@@ -292,7 +292,8 @@ module.exports = generators.Base.extend({
           authorUrl: this.props.authorUrl,
           travis: this.props.travis,
           coveralls: this.props.includeCoveralls,
-          content: this.options.readme
+          content: this.options.readme,
+          example: this.options.webpackExample
         }
       }, {
         local: require.resolve('../readme')

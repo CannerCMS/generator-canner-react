@@ -48,7 +48,9 @@ module.exports = generators.Base.extend({
 
       extend(pkg, {
         devDependencies: {
-          "babel-preset-react-hmre": "1.1.1"
+          "babel-preset-react-hmre": "1.1.1",
+          "webpack-hot-middleware": "^2.12.2",
+          "express": "^4.14.0"
         },
         scripts: {
           start: "node devServer.js"
