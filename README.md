@@ -23,7 +23,5 @@ MIT © [chilijung](https://github.com/chilijung)
 
 [npm-image]: https://badge.fury.io/js/generator-canner-react.svg
 [npm-url]: https://npmjs.org/package/generator-canner-react
-[travis-image]: https://travis-ci.org/canner/generator-canner-react.svg?branch=master
-[travis-url]: https://travis-ci.org/canner/generator-canner-react
 [daviddm-image]: https://david-dm.org/canner/generator-canner-react.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/canner/generator-canner-react
