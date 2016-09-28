@@ -18,6 +18,33 @@ That'll generate a project with all the common tools setup. This includes:
 
 ... and more!
 
+## Tree structure
+
+```
+<Project>
+	├── webpack.config.dev.js
+	├── tests.webpack.js
+	├── test
+	│   ├── <project>-test.js
+	│   └── .eslintrc
+	├── src
+	│   └── index.js
+	├── package.json
+	├── lib
+	│   └── index.js
+	├── karma.conf.js
+	├── example
+	│   ├── index.js
+	│   └── index.html
+	├── devServer.js
+	├── README.md
+	├── .gitignore
+	├── .gitattributes
+	├── .eslintrc.js
+	├── .editorconfig
+	└── .babelrc
+```
+
 
 ## Installation
 
