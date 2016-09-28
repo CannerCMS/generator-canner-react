@@ -16,7 +16,7 @@
     "lint": "eslint ./generators ./test",
     "test": "mocha --recursive",
     "prepublish": "npm run check:src",
-    "check:src": "npm run lint && npm run test",
+    "check:src": "npm run lint",
     "validate": "npm ls"
   },
   "main": "index.js",
