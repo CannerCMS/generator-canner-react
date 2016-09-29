@@ -1,4 +1,4 @@
-# generator-canner-react [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url][![Build Status](https://secure.travis-ci.org/canner/generator-canner-react.svg?branch=master)](https://travis-ci.org/canner/generator-canner-react)
+# generator-canner-react [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Build Status](https://travis-ci.org/Canner/generator-canner-react.svg?branch=master)](https://travis-ci.org/canner/generator-canner-react)
 > A generator for react projects
 
 *Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files.*
