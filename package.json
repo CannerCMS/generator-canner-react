@@ -16,7 +16,7 @@
     "lint": "eslint ./generators ./test",
     "test": "mocha --recursive",
     "test:watch": "mocha --recursive --watch",
-    "prepublish": "npm run check:src",
+    "prepublish": "npm run check:src && npm run test",
     "check:src": "npm run lint",
     "validate": "npm ls"
   },
@@ -56,6 +56,7 @@
   "repository": "canner/generator-canner-react",
   "license": "MIT",
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ]
 }
