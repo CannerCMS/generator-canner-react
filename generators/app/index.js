@@ -34,7 +34,7 @@ module.exports = generators.Base.extend({
     this.option('license', {
       type: Boolean,
       required: false,
-      defaults: false,
+      defaults: 'MIT',
       desc: 'Include a license'
     });
 
@@ -160,6 +160,12 @@ module.exports = generators.Base.extend({
         message: 'Add travis badge',
         when: !this.options.travis,
         default: false
+      }, {
+        name: 'license',
+        message: 'Package license',
+        when: this.options.license,
+        default: 'MIT',
+        store: true
       }, {
         name: 'webpackExample',
         type: 'confirm',
@@ -307,7 +313,8 @@ module.exports = generators.Base.extend({
           travis: this.props.travis,
           coveralls: this.props.includeCoveralls,
           content: this.options.readme,
-          example: this.options.webpackExample
+          example: this.options.webpackExample,
+          license: this.options.license
         }
       }, {
         local: require.resolve('../readme')
