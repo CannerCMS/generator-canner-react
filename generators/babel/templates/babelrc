@@ -3,9 +3,6 @@
   "plugins": ["transform-class-properties"],
   "env": {
     "development": {
-      "plugins": [
-        "add-module-exports"
-      ]
     },
     "production": {
       "plugins": [
