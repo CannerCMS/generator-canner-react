@@ -15,6 +15,7 @@
   "scripts": {
     "lint": "eslint ./generators ./test",
     "test": "mocha --recursive",
+    "test:watch": "mocha --recursive --watch",
     "prepublish": "npm run check:src",
     "check:src": "npm run lint",
     "validate": "npm ls"
@@ -35,13 +36,14 @@
     "yeoman-generator": "^0.24.1"
   },
   "devDependencies": {
-    "yeoman-test": "^1.0.0",
-    "yeoman-assert": "^2.0.0",
     "eslint": "^2.4.0",
     "eslint-config-google": "^0.4.0",
     "mocha": "^3.0.2",
+    "mockery": "^1.7.0",
     "precommit-hook-eslint": "^3.0.0",
-    "should": "^7.1.1"
+    "should": "^7.1.1",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
   },
   "eslintConfig": {
     "env": {

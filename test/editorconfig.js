@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('node:editorconfig', function() {
+describe('canner-react:editorconfig', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/editorconfig'))
       .toPromise();
@@ -14,7 +14,7 @@ describe('node:editorconfig', function() {
   });
 });
 
-describe('node:editorconfig', function() {
+describe('canner-react:editorconfig', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/editorconfig'))
       .withOptions({generateInto: 'other/'})

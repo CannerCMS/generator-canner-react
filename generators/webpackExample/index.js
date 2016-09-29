@@ -63,7 +63,13 @@ module.exports = generators.Base.extend({
     babel: function() {
       var babelrc = this.fs.readJSON(this.destinationPath(this.options.generateInto, '.babelrc'), {});
 
-      babelrc.env.development.presets = ["react-hmre"];
+      extend(babelrc, {
+        env: {
+          development: {
+            presets: ["react-hmre"]
+          }
+        }
+      });
       this.fs.writeJSON(this.destinationPath(this.options.generateInto, '.babelrc'), babelrc);
     }
   }

@@ -6,7 +6,7 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 var Promise = require('pinkie-promise');
 
-describe('node:app', function() {
+describe('canner-react:app', function() {
   before(function() {
     mockery.enable({
       warnOnReplace: false,
@@ -34,13 +34,13 @@ describe('node:app', function() {
   describe('running on new project', function() {
     before(function() {
       this.answers = {
-        name: 'generator-node',
-        description: 'A node generator',
-        homepage: 'http://yeoman.io',
-        githubAccount: 'yeoman',
-        authorName: 'The Yeoman Team',
-        authorEmail: 'hi@yeoman.io',
-        authorUrl: 'http://yeoman.io',
+        name: 'generator-canner-react',
+        description: 'A canner-react generator',
+        homepage: 'https://canner.io',
+        githubAccount: 'canner',
+        authorName: 'The Canner Team',
+        authorEmail: 'hi@canner.io',
+        authorUrl: 'https://canner.io',
         keywords: ['foo', 'bar']
       };
       return helpers.run(path.join(__dirname, '../generators/app'))
@@ -50,43 +50,42 @@ describe('node:app', function() {
 
     it('creates files', function() {
       assert.file([
-        '.travis.yml',
         '.editorconfig',
         '.gitignore',
+        '.babelrc',
+        '.eslintrc.js',
         '.gitattributes',
         'README.md',
-        'lib/index.js',
-        'test/index.js'
+        'src/index.js',
+        'test/generator-canner-react-test.js'
       ]);
     });
 
     it('creates package.json', function() {
       assert.file('package.json');
       assert.jsonFileContent('package.json', {
-        name: 'generator-node',
+        name: 'generator-canner-react',
         version: '0.0.0',
         description: this.answers.description,
         homepage: this.answers.homepage,
-        repository: 'yeoman/generator-node',
+        repository: 'canner/generator-canner-react',
         author: {
           name: this.answers.authorName,
           email: this.answers.authorEmail,
           url: this.answers.authorUrl
         },
-        files: ['dist'],
+        files: ['lib'],
         keywords: this.answers.keywords,
-        main: 'dist/index.js'
+        main: 'lib/index.js'
       });
     });
 
     it('creates and fill contents in README.md', function() {
       assert.file('README.md');
-      assert.fileContent('README.md', 'var generatorNode = require(\'generator-node\');');
-      assert.fileContent('README.md', '> A node generator');
-      assert.fileContent('README.md', '$ npm install --save generator-node');
-      assert.fileContent('README.md', '© [The Yeoman Team](http://yeoman.io)');
-      assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/generator-node.svg?branch=master');
-      assert.fileContent('README.md', 'coveralls');
+      assert.fileContent('README.md', 'var generatorCannerReact = require(\'generator-canner-react\');');
+      assert.fileContent('README.md', '> A canner-react generator');
+      assert.fileContent('README.md', '$ npm install --save generator-canner-react');
+      assert.fileContent('README.md', '© [The Canner Team](https://canner.io)');
     });
   });
 
@@ -95,15 +94,15 @@ describe('node:app', function() {
       this.pkg = {
         version: '1.0.34',
         description: 'lots of fun',
-        homepage: 'http://yeoman.io',
-        repository: 'yeoman/generator-node',
-        author: 'The Yeoman Team',
+        homepage: 'https://canner.io',
+        repository: 'canner/generator-canner-react',
+        author: 'The Canner Team',
         files: ['lib'],
         keywords: ['bar']
       };
       return helpers.run(path.join(__dirname, '../generators/app'))
         .withPrompts({
-          name: 'generator-node'
+          name: 'generator-canner-react'
         })
         .on('ready', function(gen) {
           gen.fs.writeJSON(gen.destinationPath('package.json'), this.pkg);
@@ -113,7 +112,7 @@ describe('node:app', function() {
     });
 
     it('extends package.json keys with missing ones', function() {
-      var pkg = _.extend({name: 'generator-node'}, this.pkg);
+      var pkg = _.extend({name: 'generator-canner-react'}, this.pkg);
       assert.jsonFileContent('package.json', pkg);
     });
 
@@ -122,49 +121,30 @@ describe('node:app', function() {
     });
   });
 
-  describe('--no-travis', function() {
+  describe('--with-travis', function() {
     before(function() {
       return helpers.run(path.join(__dirname, '../generators/app'))
-        .withOptions({travis: false})
+        .withOptions({travis: true})
         .toPromise();
     });
 
-    it('skip .travis.yml', function() {
-      assert.noFile('.travis.yml');
+    it('have .travis.yml', function() {
+      assert.file('.travis.yml');
     });
   });
 
-  describe('--no-babel', function() {
-    before(function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
-        .withOptions({babel: false})
-        .toPromise();
-    });
+  // describe('--projectRoot', function() {
+  //   before(function() {
+  //     return helpers.run(path.join(__dirname, '../generators/app'))
+  //       .withOptions({projectRoot: 'generators'})
+  //       .toPromise();
+  //   });
 
-    it('skip .bablerc', function() {
-      assert.noFile('.babelrc');
-    });
-
-    it('include the raw files', function() {
-      assert.jsonFileContent('package.json', {
-        files: ['lib'],
-        main: 'lib/index.js'
-      });
-    });
-  });
-
-  describe('--projectRoot', function() {
-    before(function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
-        .withOptions({projectRoot: 'generators', babel: false})
-        .toPromise();
-    });
-
-    it('include the raw files', function() {
-      assert.jsonFileContent('package.json', {
-        files: ['generators'],
-        main: 'generators/index.js'
-      });
-    });
-  });
+  //   it('include the raw files', function() {
+  //     assert.jsonFileContent('package.json', {
+  //       files: ['generators'],
+  //       main: 'generators/index.js'
+  //     });
+  //   });
+  // });
 });

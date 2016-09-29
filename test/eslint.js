@@ -3,34 +3,24 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('node:eslint', function() {
+describe('canner-raect:eslint', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/eslint'))
       .toPromise();
   });
 
   it('fill package.json', function() {
-    assert.fileContent('package.json', /"eslint-config-xo-space":/);
+    assert.fileContent('package.json', '"eslint": "^3.1.1"');
+    assert.fileContent('package.json', '"eslint-config-google": "^0.4.0"');
+    assert.fileContent('package.json', '"eslint-plugin-react": "^6.2.0"');
+    assert.fileContent('package.json', '"babel-eslint": "^6.1.2"');
+    assert.fileContent('package.json', '"precommit-hook-eslint": "^3.0.0"');
+    assert.fileContent('package.json', '"lint": "eslint src test"');
     assert.jsonFileContent('package.json', {
-      eslintConfig: {
-        extends: 'xo-space',
-        env: {
-          mocha: true
-        }
-      }
-    });
-  });
-
-  describe('--es2015', function() {
-    before(function() {
-      return helpers.run(path.join(__dirname, '../generators/eslint'))
-        .withOptions({es2015: true})
-        .toPromise();
-    });
-
-    it('fill package.json for ES2015', function() {
-      assert.fileContent('package.json', /"babel-eslint":/);
-      assert.fileContent('package.json', /"eslint-plugin-babel":/);
+      'pre-commit': [
+        "lint",
+        "test"
+      ]
     });
   });
 
@@ -42,11 +32,17 @@ describe('node:eslint', function() {
     });
 
     it('fill env .eslintrc with generate-into option', function() {
-      assert.fileContent('other/package.json', /"eslint-config-xo-space":/);
+      assert.fileContent('other/package.json', '"eslint": "^3.1.1"');
+      assert.fileContent('other/package.json', '"eslint-config-google": "^0.4.0"');
+      assert.fileContent('other/package.json', '"eslint-plugin-react": "^6.2.0"');
+      assert.fileContent('other/package.json', '"babel-eslint": "^6.1.2"');
+      assert.fileContent('other/package.json', '"precommit-hook-eslint": "^3.0.0"');
+      assert.fileContent('other/package.json', '"lint": "eslint src test"');
       assert.jsonFileContent('other/package.json', {
-        eslintConfig: {
-          extends: 'xo-space'
-        }
+        'pre-commit': [
+          "lint",
+          "test"
+        ]
       });
     });
   });

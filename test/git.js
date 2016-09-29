@@ -3,11 +3,11 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('node:git', function() {
+describe('canner-react:git', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/git'))
       .withOptions({
-        repositoryPath: 'yeoman/generator-node'
+        repositoryPath: 'canner/generator-canner-react'
       })
       .toPromise();
   });
@@ -25,11 +25,11 @@ describe('node:git', function() {
   });
 });
 
-describe('node:git', function() {
+describe('canner-react:git', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/git'))
       .withOptions({
-        repositoryPath: 'yeoman/generator-node',
+        repositoryPath: 'canner/generator-canner-react',
         generateInto: 'other/'
       })
       .toPromise();

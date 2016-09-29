@@ -3,15 +3,15 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('node:readme', function() {
+describe('canner-react:readme', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: true
       })
       .on('ready', function(gen) {
@@ -27,21 +27,21 @@ describe('node:readme', function() {
     assert.fileContent('README.md', 'var myProject = require(\'my-project\');');
     assert.fileContent('README.md', '> a cool project');
     assert.fileContent('README.md', '$ npm install --save my-project');
-    assert.fileContent('README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
+    assert.fileContent('README.md', 'MIT © [canner](http://canner.io)');
+    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/canner/my-project.svg?branch=master');
     assert.fileContent('README.md', 'coveralls');
   });
 });
 
-describe('node:readme --content', function() {
+describe('canner-react:readme --content', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: true,
         content: 'My custom content'
       })
@@ -56,21 +56,21 @@ describe('node:readme --content', function() {
   it('fill custom contents in README.md', function() {
     assert.file('README.md');
     assert.fileContent('README.md', 'My custom content');
-    assert.fileContent('README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
+    assert.fileContent('README.md', 'MIT © [canner](http://canner.io)');
+    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/canner/my-project.svg?branch=master');
     assert.fileContent('README.md', 'coveralls');
   });
 });
 
-describe('node:readme --no-coveralls', function() {
+describe('canner-react:readme --no-coveralls', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: false
       })
       .on('ready', function(gen) {
@@ -86,15 +86,15 @@ describe('node:readme --no-coveralls', function() {
   });
 });
 
-describe('node:readme --generate-into', function() {
+describe('canner-react:readme --generate-into', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: true,
         generateInto: 'other/'
       })
@@ -111,21 +111,21 @@ describe('node:readme --generate-into', function() {
     assert.fileContent('other/README.md', 'var myProject = require(\'my-project\');');
     assert.fileContent('other/README.md', '> a cool project');
     assert.fileContent('other/README.md', '$ npm install --save my-project');
-    assert.fileContent('other/README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
+    assert.fileContent('other/README.md', 'MIT © [canner](http://canner.io)');
+    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/canner/my-project.svg?branch=master');
     assert.fileContent('other/README.md', 'coveralls');
   });
 });
 
-describe('node:readme --content and --generate-into', function() {
+describe('canner-react:readme --content and --generate-into', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: true,
         content: 'My custom content',
         generateInto: 'other/'
@@ -141,21 +141,21 @@ describe('node:readme --content and --generate-into', function() {
   it('fill custom contents in README.md', function() {
     assert.file('other/README.md');
     assert.fileContent('other/README.md', 'My custom content');
-    assert.fileContent('other/README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
+    assert.fileContent('other/README.md', 'MIT © [canner](http://canner.io)');
+    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/canner/my-project.svg?branch=master');
     assert.fileContent('other/README.md', 'coveralls');
   });
 });
 
-describe('node:readme --no-coveralls and --generate-into', function() {
+describe('canner-react:readme --no-coveralls and --generate-into', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
-        githubAccount: 'yeoman',
-        authorName: 'Yeoman',
-        authorUrl: 'http://yeoman.io',
+        githubAccount: 'canner',
+        authorName: 'canner',
+        authorUrl: 'http://canner.io',
         coveralls: false,
         generateInto: 'other/'
       })

@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('node:boilerplate', function() {
+describe('canner-react:boilerplate', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/boilerplate'))
       .withOptions({name: 'my-module'})
@@ -11,28 +11,20 @@ describe('node:boilerplate', function() {
   });
 
   it('creates boilerplate files', function() {
-    assert.file('lib/index.js');
-    assert.file('test/index.js');
-    assert.fileContent('lib/index.js', 'module.exports = {};');
-    assert.fileContent('test/index.js', 'var myModule');
-    assert.fileContent('test/index.js', 'describe(\'my-module\'');
+    assert.file([
+      'src/index.js',
+      'test/my-module-test.js',
+      'karma.conf.js',
+      'tests.webpack.js',
+      'test/.eslintrc'
+    ]);
+    assert.fileContent('src/index.js', 'export default {};');
+    assert.fileContent('test/my-module-test.js', 'import PackageName from \'../src\';');
+    assert.fileContent('test/my-module-test.js', 'describe(\'PackageName\', function() {');
   });
 });
 
-describe('node:boilerplate', function() {
-  before(function() {
-    return helpers.run(path.join(__dirname, '../generators/boilerplate'))
-      .withOptions({name: 'my-module', babel: true})
-      .toPromise();
-  });
-
-  it('creates boilerplate files in ES2015', function() {
-    assert.fileContent('lib/index.js', 'export default {};');
-    assert.fileContent('test/index.js', 'import myModule');
-  });
-});
-
-describe('node:boilerplate', function() {
+describe('canner-react:boilerplate', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/boilerplate'))
       .withOptions({name: 'my-module', generateInto: 'other/'})
@@ -40,10 +32,15 @@ describe('node:boilerplate', function() {
   });
 
   it('creates boilerplate files using another path', function() {
-    assert.file('other/lib/index.js');
-    assert.file('other/test/index.js');
-    assert.fileContent('other/lib/index.js', 'module.exports = {};');
-    assert.fileContent('other/test/index.js', 'var myModule');
-    assert.fileContent('other/test/index.js', 'describe(\'my-module\'');
+    assert.file([
+      'other/src/index.js',
+      'other/test/my-module-test.js',
+      'other/karma.conf.js',
+      'other/tests.webpack.js',
+      'other/test/.eslintrc'
+    ]);
+    assert.fileContent('other/src/index.js', 'export default {};');
+    assert.fileContent('other/test/my-module-test.js', 'import PackageName from \'../src\';');
+    assert.fileContent('other/test/my-module-test.js', 'describe(\'PackageName\', function() {');
   });
 });
