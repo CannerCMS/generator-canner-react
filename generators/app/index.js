@@ -57,6 +57,13 @@ module.exports = generators.Base.extend({
       desc: 'Relative path to the project code root'
     });
 
+    this.option('umd', {
+      type: String,
+      required: false,
+      defaults: false,
+      desc: 'Building umd script'
+    });
+
     this.option('readme', {
       type: String,
       required: false,
@@ -151,7 +158,7 @@ module.exports = generators.Base.extend({
         name: 'travis',
         type: 'confirm',
         message: 'Add travis badge',
-        when: this.options.travis === undefined,
+        when: !this.options.travis,
         default: false
       }, {
         name: 'webpackExample',
@@ -160,6 +167,12 @@ module.exports = generators.Base.extend({
         when: this.options.webpackExample,
         default: true,
         store: true
+      }, {
+        name: 'umd',
+        type: 'confirm',
+        message: 'Build umd script',
+        when: !this.options.umd,
+        default: false
       }];
 
       return this.prompt(prompts).then(function(props) {
@@ -246,7 +259,8 @@ module.exports = generators.Base.extend({
 
     this.composeWith('node:babel', {
       options: {
-        name: this.props.name
+        name: this.props.name,
+        umd: this.props.umd
       }
     }, {
       local: require.resolve('../babel')

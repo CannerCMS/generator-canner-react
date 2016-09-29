@@ -24,11 +24,6 @@ module.exports = generators.Base.extend({
       this.destinationPath(this.options.generateInto, 'package.json'), {}
     );
 
-    var eslintConfig = {
-      extends: ['google', 'plugin:react/recommended'],
-      parser: 'babel-eslint'
-    };
-
     var devDep = {
       'eslint': '^3.1.1',
       'eslint-config-google': '^0.4.0',
@@ -39,7 +34,6 @@ module.exports = generators.Base.extend({
 
     extend(pkg, {
       'devDependencies': devDep,
-      'eslintConfig': eslintConfig,
       'scripts': {
         lint: "eslint src test"
       },

@@ -53,7 +53,8 @@ module.exports = generators.Base.extend({
           "express": "^4.14.0"
         },
         scripts: {
-          start: "node devServer.js"
+          start: "node devServer.js",
+          lint: "eslint src test example"
         }
       });
       this.fs.writeJSON(this.destinationPath(this.options.generateInto, 'package.json'), pkg);

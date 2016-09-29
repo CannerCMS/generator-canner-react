@@ -72,7 +72,9 @@ module.exports = generators.Base.extend({
         },
         license: pkg.license,
         includeCoveralls: this.options.coveralls,
-        content: this.options.content
+        content: this.options.content,
+        travis: this.options.travis,
+        example: this.options.example
       }
     );
   }
