@@ -55,6 +55,10 @@ module.exports = generators.Base.extend({
       var pkg = this.fs.readJSON(this.destinationPath(this.options.generateInto, 'package.json'), {});
 
       extend(pkg, {
+        peerDependencies: {
+          "react": "^15.3.1",
+          "react-dom": "^15.3.1"
+        },
         devDependencies: {
           "rimraf": "^2.5.4",
           "karma": "^1.2.0",
@@ -64,9 +68,7 @@ module.exports = generators.Base.extend({
           "karma-sourcemap-loader": "^0.3.7",
           "karma-webpack": "^1.8.0",
           "chai": "^3.5.0",
-          "react": "^15.3.1",
           "react-addons-test-utils": "^15.3.1",
-          "react-dom": "^15.3.1",
           "webpack": "^1.13.2",
           "babel-loader": "^6.2.3",
           "mocha": "^2.4.5"

@@ -1,5 +1,6 @@
 {
   "presets": ["airbnb"],
+  "plugins": ["transform-class-properties"],
   "env": {
     "development": {
       "plugins": [
