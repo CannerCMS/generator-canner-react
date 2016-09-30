@@ -240,15 +240,15 @@ module.exports = generators.Base.extend({
       });
     }
 
-    this.composeWith('node:editorconfig', {}, {
+    this.composeWith('canner-react:editorconfig', {}, {
       local: require.resolve('../editorconfig')
     });
 
-    this.composeWith('node:eslint', {}, {
+    this.composeWith('canner-react:eslint', {}, {
       local: require.resolve('../eslint')
     });
 
-    this.composeWith('node:git', {
+    this.composeWith('canner-react:git', {
       options: {
         name: this.props.name,
         githubAccount: this.props.githubAccount
@@ -257,7 +257,7 @@ module.exports = generators.Base.extend({
       local: require.resolve('../git')
     });
 
-    this.composeWith('node:babel', {
+    this.composeWith('canner-react:babel', {
       options: {
         name: this.props.name,
         umd: this.props.umd
@@ -266,7 +266,7 @@ module.exports = generators.Base.extend({
       local: require.resolve('../babel')
     });
 
-    this.composeWith('node:boilerplate', {
+    this.composeWith('canner-react:boilerplate', {
       options: {
         name: this.props.name
       }
@@ -275,9 +275,10 @@ module.exports = generators.Base.extend({
     });
 
     if (this.options.webpackExample) {
-      this.composeWith('node:webpackExample', {
+      this.composeWith('canner-react:webpackExample', {
         options: {
-          projectRoot: this.options.projectRoot
+          projectRoot: this.options.projectRoot,
+          authorName: this.props.authorName
         }
       }, {
         local: require.resolve('../webpackExample')
@@ -297,7 +298,7 @@ module.exports = generators.Base.extend({
     }
 
     if (!this.fs.exists(this.destinationPath('README.md'))) {
-      this.composeWith('node:readme', {
+      this.composeWith('canner-react:readme', {
         options: {
           name: this.props.name,
           description: this.props.description,

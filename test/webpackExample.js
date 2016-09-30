@@ -4,28 +4,34 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('canner-react:webpackExample', function() {
-  describe('generate basic webpack example', function() {
+  describe('generate basic webpack docs', function() {
     before(function() {
       return helpers.run(path.join(__dirname, '../generators/webpackExample'))
         .withOptions({
-          projectRoot: 'lib'
+          projectRoot: 'lib',
+          authorName: 'chilijung'
         })
         .toPromise();
     });
 
     it('creates files and configuration', function() {
       assert.file([
-        'example/index.js',
+        'docs/index.js',
         'devServer.js',
         'webpack.config.dev.js',
-        'example/index.html'
+        'webpack.config.prod.js',
+        'docs/index.html'
       ]);
 
       assert.fileContent('package.json', '"babel-preset-react-hmre": "1.1.1"');
       assert.fileContent('package.json', '"webpack-hot-middleware": "^2.12.2"');
       assert.fileContent('package.json', '"express": "^4.14.0"');
       assert.fileContent('package.json', '"start": "node devServer.js"');
-      assert.fileContent('package.json', '"lint": "eslint src test example"');
+      assert.fileContent('package.json', '"lint": "eslint src test docs"');
+      assert.fileContent('package.json', '"build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js"');
+      assert.fileContent('package.json', '"postpublish": "npm run build:docs"');
+      assert.fileContent('webpack.config.prod.js', 'This file is created by chilijung. Built time: ');
+
       assert.fileContent('.babelrc', "react-hmre");
     });
   });
@@ -52,24 +58,28 @@ describe('canner-react:webpackExample', function() {
       return helpers.run(path.join(__dirname, '../generators/webpackExample'))
         .withOptions({
           projectRoot: 'lib',
-          generateInto: 'other/'
+          generateInto: 'other/',
+          authorName: 'chilijung'
         })
         .toPromise();
     });
 
     it('creates files and configuration', function() {
       assert.file([
-        'other/example/index.js',
+        'other/docs/index.js',
         'other/devServer.js',
         'other/webpack.config.dev.js',
-        'other/example/index.html'
+        'other/docs/index.html'
       ]);
 
       assert.fileContent('other/package.json', '"babel-preset-react-hmre": "1.1.1"');
       assert.fileContent('other/package.json', '"webpack-hot-middleware": "^2.12.2"');
       assert.fileContent('other/package.json', '"express": "^4.14.0"');
       assert.fileContent('other/package.json', '"start": "node devServer.js"');
-      assert.fileContent('other/package.json', '"lint": "eslint src test example"');
+      assert.fileContent('other/package.json', '"lint": "eslint src test docs"');
+      assert.fileContent('other/package.json', '"build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js"');
+      assert.fileContent('other/package.json', '"postpublish": "npm run build:docs"');
+      assert.fileContent('other/webpack.config.prod.js', 'This file is created by chilijung. Built time: ');
       assert.fileContent('other/.babelrc', "react-hmre");
     });
   });

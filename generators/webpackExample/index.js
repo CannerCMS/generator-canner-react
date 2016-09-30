@@ -18,13 +18,19 @@ module.exports = generators.Base.extend({
       required: true,
       desc: 'Relative path to the project code root'
     });
+
+    this.option('authorName', {
+      type: String,
+      required: true,
+      desc: 'Author name'
+    });
   },
 
   writing: {
     initializing: function() {
       this.fs.copy(
         this.templatePath('index.js'),
-        this.destinationPath(this.options.generateInto, 'example/index.js')
+        this.destinationPath(this.options.generateInto, 'docs/index.js')
       );
 
       this.fs.copy(
@@ -37,9 +43,15 @@ module.exports = generators.Base.extend({
         this.destinationPath(this.options.generateInto, 'webpack.config.dev.js')
       );
 
+      this.fs.copyTpl(
+        this.templatePath('webpack.config.prod.js'),
+        this.destinationPath(this.options.generateInto, 'webpack.config.prod.js'),
+        {authorName: this.options.authorName}
+      );
+
       this.fs.copy(
         this.templatePath('index.html'),
-        this.destinationPath(this.options.generateInto, 'example/index.html')
+        this.destinationPath(this.options.generateInto, 'docs/index.html')
       );
     },
 
@@ -53,8 +65,10 @@ module.exports = generators.Base.extend({
           "express": "^4.14.0"
         },
         scripts: {
-          start: "node devServer.js",
-          lint: "eslint src test example"
+          "start": "node devServer.js",
+          "lint": "eslint src test docs",
+          "build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
+          "postpublish": "npm run build:docs"
         }
       });
       this.fs.writeJSON(this.destinationPath(this.options.generateInto, 'package.json'), pkg);
