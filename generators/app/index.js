@@ -187,19 +187,16 @@ module.exports = generators.Base.extend({
       }
       var done = this.async();
 
-      githubUsername(this.props.authorEmail, function(err, username) {
-        if (err) {
-          username = username || '';
-        }
+      githubUsername(this.props.authorEmail).then(username => {
         this.prompt({
           name: 'githubAccount',
           message: 'GitHub username or organization',
-          default: username
+          default: username || ''
         }).then(function(prompt) {
           this.props.githubAccount = prompt.githubAccount;
           done();
         }.bind(this));
-      }.bind(this));
+      });
     }
   },
 
