@@ -5,11 +5,11 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './example/index.js'
+    './docs/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: 'bundle.js',
     publicPath: '/static/'
   },
   resolve: {
