@@ -46,8 +46,8 @@ module.exports = generators.Base.extend({
 
       if (this.options.umd) {
         extend(pkg.scripts, {
-          "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./index.js dist/" + this.options.name + ".js",
-          "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./index.js dist/" + this.options.name + ".min.js",
+          "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./src/index.js dist/" + this.options.name + ".js",
+          "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./src/index.js dist/" + this.options.name + ".min.js",
           "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min"
         });
       }
