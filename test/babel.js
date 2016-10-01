@@ -19,6 +19,7 @@ describe('canner-react:babel', function() {
     assert.fileContent('package.json', '"cross-env": "^2.0.1"');
     assert.fileContent('package.json', '"babel-plugin-transform-class-properties": "^6.16.0"');
     assert.fileContent('package.json', '"babel-plugin-transform-react-remove-prop-types": "^0.2.2"');
+    assert.fileContent('package.json', '"babel-plugin-add-module-exports": "^0.2.1"');
 
     assert.fileContent('package.json', '"clean": "rimraf lib dist"');
     assert.fileContent('package.json', '"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"');
