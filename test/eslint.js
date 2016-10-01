@@ -46,4 +46,17 @@ describe('canner-raect:eslint', function() {
       });
     });
   });
+
+  describe('with example', function() {
+    before(function() {
+      return helpers.run(path.join(__dirname, '../generators/eslint'))
+        .withOptions({example: true})
+        .toPromise();
+    });
+
+    it('eslintignore bundle file', function() {
+      assert.file('.eslintignore');
+      assert.fileContent('.eslintignore', 'docs/static');
+    });
+  });
 });

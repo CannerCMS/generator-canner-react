@@ -29,10 +29,6 @@ describe('canner-react:babel', function() {
   it('create .babelrc', function() {
     assert.file('.babelrc');
   });
-
-  it('add gitignore lib', function() {
-    assert.fileContent('.gitignore', 'lib');
-  });
 });
 
 describe('canner-react:babel with umd', function() {

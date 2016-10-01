@@ -241,7 +241,11 @@ module.exports = generators.Base.extend({
       local: require.resolve('../editorconfig')
     });
 
-    this.composeWith('canner-react:eslint', {}, {
+    this.composeWith('canner-react:eslint', {
+      options: {
+        example: this.options.webpackExample
+      }
+    }, {
       local: require.resolve('../eslint')
     });
 

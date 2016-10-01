@@ -30,6 +30,7 @@ describe('canner-react:webpackExample', function() {
       assert.fileContent('package.json', '"lint": "eslint src test docs"');
       assert.fileContent('package.json', '"build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js"');
       assert.fileContent('package.json', '"postpublish": "npm run build:docs"');
+      assert.fileContent('docs/index.html', '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>');
       assert.fileContent('webpack.config.prod.js', 'This file is created by chilijung. Built time: ');
 
       assert.fileContent('.babelrc', "react-hmre");
@@ -79,7 +80,9 @@ describe('canner-react:webpackExample', function() {
       assert.fileContent('other/package.json', '"lint": "eslint src test docs"');
       assert.fileContent('other/package.json', '"build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js"');
       assert.fileContent('other/package.json', '"postpublish": "npm run build:docs"');
+      assert.fileContent('other/docs/index.html', '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>');
       assert.fileContent('other/webpack.config.prod.js', 'This file is created by chilijung. Built time: ');
+
       assert.fileContent('other/.babelrc', "react-hmre");
     });
   });

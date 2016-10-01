@@ -60,17 +60,6 @@ module.exports = generators.Base.extend({
         this.templatePath('babelrc'),
         this.destinationPath(this.options.generateInto, '.babelrc')
       );
-
-      // Add dist/ to the .gitignore file
-      var gitignore = this.fs.read(
-        this.destinationPath(this.options.generateInto, '.gitignore'),
-        {defaults: ''}
-      ).split('\n').filter(Boolean);
-      gitignore.push('lib');
-      this.fs.write(
-        this.destinationPath(this.options.generateInto, '.gitignore'),
-        gitignore.join('\n') + '\n'
-      );
     }
   }
 });

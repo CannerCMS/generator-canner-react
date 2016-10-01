@@ -12,6 +12,12 @@ module.exports = generators.Base.extend({
       defaults: '',
       desc: 'Relocate the location of the generated files.'
     });
+
+    this.option('example', {
+      type: String,
+      required: false,
+      desc: 'with example'
+    });
   },
 
   writing: function() {
@@ -19,6 +25,13 @@ module.exports = generators.Base.extend({
       this.templatePath('eslintrc.js'),
       this.destinationPath(this.options.generateInto, '.eslintrc.js')
     );
+
+    if (this.options.example) {
+      this.fs.copy(
+        this.templatePath('eslintignore'),
+        this.destinationPath(this.options.generateInto, '.eslintignore')
+      );
+    }
 
     var pkg = this.fs.readJSON(
       this.destinationPath(this.options.generateInto, 'package.json'), {}
