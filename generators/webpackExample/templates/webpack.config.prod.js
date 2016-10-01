@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        exclude: "/node_modules"
+        exclude: path.resolve(__dirname, "node_modules")
       }
     ]
   }
