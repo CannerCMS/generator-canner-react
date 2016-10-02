@@ -36,7 +36,8 @@ module.exports = generators.Base.extend({
         this.templatePath('karma.conf.js'),
         this.destinationPath(this.options.generateInto, 'karma.conf.js'),
         {
-          pkgSafeName: _.camelCase(this.options.name)
+          pkgSafeName: _.camelCase(this.options.name),
+          travis: this.options.travis
         }
       );
 

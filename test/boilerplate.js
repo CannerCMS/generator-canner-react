@@ -25,6 +25,19 @@ describe('canner-react:boilerplate', function() {
   });
 });
 
+describe('canner-react:boilerplate --travis', function() {
+  before(function() {
+    return helpers.run(path.join(__dirname, '../generators/boilerplate'))
+      .withOptions({name: 'my-module', travis: true})
+      .toPromise();
+  });
+
+  it('should add travis settings in karma.conf.js when enable travis', () => {
+    assert.fileContent('karma.conf.js', 'customLaunchers: {');
+    assert.fileContent('karma.conf.js', "config.browsers = ['Chrome_travis_ci'];");
+  });
+});
+
 describe('canner-react:boilerplate', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/boilerplate'))

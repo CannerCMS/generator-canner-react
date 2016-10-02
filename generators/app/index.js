@@ -232,7 +232,18 @@ module.exports = generators.Base.extend({
 
   default: function() {
     if (this.options.travis) {
-      this.composeWith('travis', {}, {
+      this.composeWith('travis', {
+        options: {
+          config: {
+            script: ['npm run test'],
+            before_install: [ // eslint-disable-line
+              'export CHROME_BIN=chromium-browser',
+              'export DISPLAY=:99.0',
+              'sh -e /etc/init.d/xvfb start'
+            ]
+          }
+        }
+      }, {
         local: require.resolve('generator-travis/generators/app')
       });
     }
@@ -261,7 +272,8 @@ module.exports = generators.Base.extend({
     this.composeWith('canner-react:babel', {
       options: {
         name: this.props.name,
-        umd: this.props.umd
+        umd: this.props.umd,
+        travis: this.props.travis
       }
     }, {
       local: require.resolve('../babel')
