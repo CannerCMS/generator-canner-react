@@ -35,7 +35,8 @@ module.exports = generators.Base.extend({
           "cross-env": "^2.0.1",
           "babel-plugin-transform-class-properties": "^6.16.0",
           "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
-          "babel-plugin-add-module-exports": "^0.2.1"
+          "babel-plugin-add-module-exports": "^0.2.1",
+          "babel-runtime": "^6.11.6"
         },
         scripts: {
           "clean": "rimraf lib dist",
