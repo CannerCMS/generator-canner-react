@@ -60,6 +60,9 @@ Then generate your new project:
 ```bash
 yo canner-react
 ```
+## Maintainer
+
+[chilijung](https://github.com/chilijung)
 
 ## License
 
