@@ -32,9 +32,12 @@ module.exports = generators.Base.extend({
         this.destinationPath(this.options.generateInto, 'test/.eslintrc')
       );
 
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('karma.conf.js'),
-        this.destinationPath(this.options.generateInto, 'karma.conf.js')
+        this.destinationPath(this.options.generateInto, 'karma.conf.js'),
+        {
+          pkgSafeName: _.camelCase(this.options.name)
+        }
       );
 
       this.fs.copy(
@@ -78,8 +81,8 @@ module.exports = generators.Base.extend({
         scripts: {
           "clean": "rimraf lib dist",
           "check:src": "npm run lint && npm run test",
-          "test": "cross-env karma start --single-run",
-          "test:watch": "cross-env karma start"
+          "test": "cross-env BABEL_ENV=test karma start --single-run",
+          "test:watch": "cross-env BABEL_ENV=test karma start"
         }
       });
 

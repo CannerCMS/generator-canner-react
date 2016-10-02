@@ -21,6 +21,7 @@ describe('canner-react:boilerplate', function() {
     assert.fileContent('src/index.js', 'export default {};');
     assert.fileContent('test/my-module-test.js', 'import PackageName from \'../src\';');
     assert.fileContent('test/my-module-test.js', 'describe(\'PackageName\', function() {');
+    assert.fileContent('karma.conf.js', "myModule: path.join(__dirname, './src/')");
   });
 });
 

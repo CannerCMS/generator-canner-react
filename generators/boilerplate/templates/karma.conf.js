@@ -17,17 +17,23 @@ module.exports = function(config) {
       externals: {
         'react/lib/ReactContext': 'window',
         'react/addons': true,
+        'jsdom': 'window',
+        'cheerio': 'window',
         'react/lib/ExecutionEnvironment': true
       },
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/}
+          {
+            test: /\.js$/,
+            loaders: ['babel'],
+            exclude: path.resolve(__dirname, "node_modules")
+          }
         ]
       },
       resolve: {
         alias: {
-          dispatchRouter: path.join(__dirname, './src/')
+          <%= pkgSafeName %>: path.join(__dirname, './src/') 
         }
       }
     },

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import assert from 'assert';
 import PackageName from '../src';
 
