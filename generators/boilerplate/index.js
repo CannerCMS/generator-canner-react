@@ -73,6 +73,7 @@ module.exports = generators.Base.extend({
           "karma-webpack": "^1.8.0",
           "chai": "^3.5.0",
           "react-addons-test-utils": "^15.3.1",
+          "enzyme": "^2.4.1",
           "webpack": "^1.13.2",
           "babel-loader": "^6.2.3",
           "mocha": "^2.4.5",
