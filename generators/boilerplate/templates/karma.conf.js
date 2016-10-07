@@ -12,14 +12,14 @@ module.exports = function(config) {
     preprocessors: {
       'tests.webpack.js': ['webpack', 'sourcemap']
     },
-    <% if (travis) { -%>
+<% if (travis) { -%>
     customLaunchers: {
       Chrome_travis_ci: { // eslint-disable-line
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
     },
-    <% } -%>
+<% } -%>
     reporters: ['dots'],
     webpack: {
       externals: {
@@ -41,7 +41,7 @@ module.exports = function(config) {
       },
       resolve: {
         alias: {
-          <%= pkgSafeName %>: path.join(__dirname, './src/') 
+          <%= pkgSafeName %>: path.join(__dirname, './src/')
         }
       }
     },
@@ -49,10 +49,9 @@ module.exports = function(config) {
       noInfo: true
     }
   });
-
-  <% if (travis) { -%>
+<% if (travis) { -%>
   if (process.env.TRAVIS) {
     config.browsers = ['Chrome_travis_ci'];
   }
-  <% } -%>
+<% } -%>
 };
