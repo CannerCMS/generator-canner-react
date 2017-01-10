@@ -34,7 +34,7 @@ module.exports = function(config) {
         loaders: [
           {
             test: /\.js$/,
-            loaders: ['babel'],
+            loaders: ['babel-loader'],
             exclude: path.resolve(__dirname, "node_modules")
           }
         ]
