@@ -1,5 +1,8 @@
 module.exports = {
-  "extends": "google",
+  extends: [
+    "google",
+    "plugin:react/recommended"
+  ],
   "settings": {},
   "rules": {
     // 0 for closing rules

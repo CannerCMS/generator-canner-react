@@ -27,7 +27,7 @@ module.exports = generators.Base.extend({
     this.option('webpackExample', {
       type: Boolean,
       required: false,
-      defaults: false,
+      defaults: true,
       desc: 'Example folder with webpack local server and hot-reload'
     });
 
@@ -164,7 +164,7 @@ module.exports = generators.Base.extend({
         name: 'webpackExample',
         type: 'confirm',
         message: 'Build example folder for the project',
-        when: !this.options.webpackExample,
+        when: this.options.webpackExample,
         default: true,
         store: true
       }, {
@@ -254,7 +254,7 @@ module.exports = generators.Base.extend({
 
     this.composeWith('canner-react:eslint', {
       options: {
-        example: this.options.webpackExample
+        example: this.props.webpackExample
       }
     }, {
       local: require.resolve('../eslint')
@@ -287,7 +287,7 @@ module.exports = generators.Base.extend({
       local: require.resolve('../boilerplate')
     });
 
-    if (this.options.webpackExample) {
+    if (this.props.webpackExample) {
       this.composeWith('canner-react:webpackExample', {
         options: {
           projectRoot: this.options.projectRoot,
@@ -321,7 +321,7 @@ module.exports = generators.Base.extend({
           travis: this.props.travis,
           coveralls: this.props.includeCoveralls,
           content: this.options.readme,
-          example: this.options.webpackExample,
+          example: this.props.webpackExample,
           license: this.options.license
         }
       }, {

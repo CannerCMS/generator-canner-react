@@ -19,7 +19,7 @@ describe('canner-react:boilerplate', function() {
       'test/.eslintrc'
     ]);
     assert.fileContent('src/index.js', 'export default {};');
-    assert.fileContent('test/my-module-test.js', 'import PackageName from \'../src\';');
+    assert.fileContent('test/my-module-test.js', 'import assert from \'assert\';');
     assert.fileContent('test/my-module-test.js', 'describe(\'PackageName\', function() {');
     assert.fileContent('karma.conf.js', "myModule: path.join(__dirname, './src/')");
   });
@@ -54,7 +54,7 @@ describe('canner-react:boilerplate', function() {
       'other/test/.eslintrc'
     ]);
     assert.fileContent('other/src/index.js', 'export default {};');
-    assert.fileContent('other/test/my-module-test.js', 'import PackageName from \'../src\';');
+    assert.fileContent('other/test/my-module-test.js', 'import assert from \'assert\';');
     assert.fileContent('other/test/my-module-test.js', 'describe(\'PackageName\', function() {');
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "generator-canner-react",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "description": "A generator for react projects",
   "homepage": "",
   "author": {
@@ -38,6 +38,7 @@
   "devDependencies": {
     "eslint": "^2.4.0",
     "eslint-config-google": "^0.4.0",
+    "eslint-plugin-react": "^6.9.0",
     "mocha": "^3.0.2",
     "mockery": "^1.7.0",
     "pinkie-promise": "^2.0.1",
