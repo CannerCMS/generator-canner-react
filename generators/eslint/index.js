@@ -51,8 +51,7 @@ module.exports = generators.Base.extend({
         lint: "eslint src test"
       },
       'pre-commit': [
-        "lint",
-        "test"
+        "lint"
       ]
     });
 

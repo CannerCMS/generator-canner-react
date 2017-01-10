@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('canner-raect:eslint', function() {
+describe('canner-react:eslint', function() {
   before(function() {
     return helpers.run(path.join(__dirname, '../generators/eslint'))
       .toPromise();
@@ -18,8 +18,7 @@ describe('canner-raect:eslint', function() {
     assert.fileContent('package.json', '"lint": "eslint src test"');
     assert.jsonFileContent('package.json', {
       'pre-commit': [
-        "lint",
-        "test"
+        "lint"
       ]
     });
   });
@@ -40,8 +39,7 @@ describe('canner-raect:eslint', function() {
       assert.fileContent('other/package.json', '"lint": "eslint src test"');
       assert.jsonFileContent('other/package.json', {
         'pre-commit': [
-          "lint",
-          "test"
+          "lint"
         ]
       });
     });
