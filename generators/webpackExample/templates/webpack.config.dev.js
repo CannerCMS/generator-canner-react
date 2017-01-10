@@ -13,7 +13,10 @@ module.exports = {
     publicPath: '/static/'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['.js']
+  },
+  performance: {
+    hints: false
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
