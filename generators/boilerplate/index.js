@@ -74,9 +74,9 @@ module.exports = generators.Base.extend({
           "chai": "^3.5.0",
           "react-addons-test-utils": "^15.3.1",
           "enzyme": "^2.4.1",
-          "webpack": "^1.13.2",
+          "webpack": "2.2.0-rc.3",
           "babel-loader": "^6.2.3",
-          "mocha": "^2.4.5",
+          "mocha": "^3.2.0",
           "react": "^15.3.1",
           "react-dom": "^15.3.1"
         },

@@ -27,7 +27,7 @@ module.exports = generators.Base.extend({
     this.option('webpackExample', {
       type: Boolean,
       required: false,
-      defaults: true,
+      defaults: false,
       desc: 'Example folder with webpack local server and hot-reload'
     });
 
@@ -164,7 +164,7 @@ module.exports = generators.Base.extend({
         name: 'webpackExample',
         type: 'confirm',
         message: 'Build example folder for the project',
-        when: this.options.webpackExample,
+        when: !this.options.webpackExample,
         default: true,
         store: true
       }, {
