@@ -30,6 +30,12 @@ node devServer.js
 ```
 <% } -%>
 
+## generate demo
+
+```js
+npm run gh-pages
+```
+
 ## License
 
 <%= license %> © [<%= author.name %>](<%= author.url %>)

@@ -43,6 +43,11 @@ module.exports = generators.Base.extend({
         this.destinationPath(this.options.generateInto, 'webpack.config.dev.js')
       );
 
+      this.fs.copy(
+        this.templatePath('webpack.config.ghPages.js'),
+        this.destinationPath(this.options.generateInto, 'webpack.config.ghPages.js')
+      );
+
       this.fs.copyTpl(
         this.templatePath('webpack.config.prod.js'),
         this.destinationPath(this.options.generateInto, 'webpack.config.prod.js'),
@@ -62,13 +67,17 @@ module.exports = generators.Base.extend({
         devDependencies: {
           "babel-preset-react-hmre": "1.1.1",
           "webpack-hot-middleware": "^2.12.2",
-          "express": "^4.14.0"
+          "express": "^4.14.0",
+          "git-directory-deploy": "^1.5.1",
+          "ncp": "^2.0.0"
         },
         scripts: {
           "start": "node devServer.js",
           "lint": "eslint src test docs",
-          "build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
-          "postpublish": "npm run build:docs"
+          "gh-pages:clean": "rimraf _gh-pages && ncp ./docs ./_gh-pages",
+          "gh-pages:build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.ghPage.js",
+          "gh-pages:publish": "git-directory-deploy --directory _gh-pages",
+          "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"
         }
       });
       this.fs.writeJSON(this.destinationPath(this.options.generateInto, 'package.json'), pkg);
