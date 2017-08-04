@@ -1,7 +1,8 @@
 module.exports = {
   extends: [
     "google",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "eslint:recommended"
   ],
   "settings": {},
   "rules": {

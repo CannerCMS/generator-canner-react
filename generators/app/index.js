@@ -1,16 +1,16 @@
 'use strict';
-var _ = require('lodash');
-var extend = _.merge;
-var generators = require('yeoman-generator');
-var parseAuthor = require('parse-author');
-var githubUsername = require('github-username');
-var path = require('path');
-var askName = require('inquirer-npm-name');
+const _ = require('lodash');
+const extend = _.merge;
+const Generators = require('yeoman-generator');
+const parseAuthor = require('parse-author');
+const githubUsername = require('github-username');
+const path = require('path');
+const chalk = require('chalk');
+const askName = require('inquirer-npm-name');
 
-module.exports = generators.Base.extend({
-  constructor: function() {
-    generators.Base.apply(this, arguments);
-
+module.exports =  class extends Generators {
+  constructor(args, options) {
+    super(args, options);
     this.option('travis', {
       type: Boolean,
       required: false,
@@ -69,9 +69,9 @@ module.exports = generators.Base.extend({
       required: false,
       desc: 'Content to insert in the README.md file'
     });
-  },
+  }
 
-  initializing: function() {
+  initializing() {
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     // Pre set the default props from the information we have at this point
@@ -93,118 +93,122 @@ module.exports = generators.Base.extend({
       this.props.authorEmail = info.email;
       this.props.authorUrl = info.url;
     }
-  },
+  }
 
-  prompting: {
-    askForModuleName: function() {
-      if (this.pkg.name || this.options.name) {
-        this.props.name = this.pkg.name || _.kebabCase(this.options.name);
-        return;
+  _askForModuleName() {
+    if (this.pkg.name || this.options.name) {
+      this.props.name = this.pkg.name || _.kebabCase(this.options.name);
+      return;
+    }
+
+    return askName({
+      name: 'name',
+      message: 'Module Name',
+      default: path.basename(process.cwd()),
+      filter: _.kebabCase,
+      validate: function(str) {
+        return str.length > 0;
       }
+    }, this).then(answer => {
+      this.props.name = answer.name;
+    });
+  }
 
-      return askName({
-        name: 'name',
-        message: 'Module Name',
-        default: path.basename(process.cwd()),
-        filter: _.kebabCase,
-        validate: function(str) {
-          return str.length > 0;
-        }
-      }, this).then(function(answer) {
-        this.props.name = answer.name;
-      }.bind(this));
-    },
-
-    askFor: function() {
-      var prompts = [{
-        name: 'description',
-        message: 'Description',
-        when: !this.props.description
-      }, {
-        name: 'homepage',
-        message: 'Project homepage url',
-        when: !this.props.homepage
-      }, {
-        name: 'authorName',
-        message: 'Author\'s Name',
-        when: !this.props.authorName,
-        default: this.user.git.name(),
-        store: true
-      }, {
-        name: 'authorEmail',
-        message: 'Author\'s Email',
-        when: !this.props.authorEmail,
-        default: this.user.git.email(),
-        store: true
-      }, {
-        name: 'authorUrl',
-        message: 'Author\'s Homepage',
-        when: !this.props.authorUrl,
-        store: true
-      }, {
-        name: 'keywords',
-        message: 'Package keywords (comma to split)',
-        when: !this.pkg.keywords,
-        filter: function(words) {
-          return words.split(/\s*,\s*/g);
-        }
-      }, {
-        name: 'includeCoveralls',
-        type: 'confirm',
-        message: 'Send coverage reports to coveralls',
-        when: this.options.coveralls === undefined,
-        default: false
-      }, {
-        name: 'travis',
-        type: 'confirm',
-        message: 'Add travis badge',
-        when: !this.options.travis,
-        default: false
-      }, {
-        name: 'webpackExample',
-        type: 'confirm',
-        message: 'Build example folder for the project',
-        when: this.options.webpackExample,
-        default: true,
-        store: true
-      }, {
-        name: 'umd',
-        type: 'confirm',
-        message: 'Build umd script',
-        when: !this.options.umd,
-        default: false
-      }];
-
-      return this.prompt(prompts).then(function(props) {
-        this.props = extend(this.props, props);
-      }.bind(this));
-    },
-
-    askForGithubAccount: function() {
-      if (this.options.githubAccount) {
-        this.props.githubAccount = this.options.githubAccount;
-        return;
+  _askFor() {
+    var prompts = [{
+      name: 'description',
+      message: 'Description',
+      when: !this.props.description
+    }, {
+      name: 'homepage',
+      message: 'Project homepage url',
+      when: !this.props.homepage
+    }, {
+      name: 'authorName',
+      message: 'Author\'s Name',
+      when: !this.props.authorName,
+      default: this.user.git.name(),
+      store: true
+    }, {
+      name: 'authorEmail',
+      message: 'Author\'s Email',
+      when: !this.props.authorEmail,
+      default: this.user.git.email(),
+      store: true
+    }, {
+      name: 'authorUrl',
+      message: 'Author\'s Homepage',
+      when: !this.props.authorUrl,
+      store: true
+    }, {
+      name: 'keywords',
+      message: 'Package keywords (comma to split)',
+      when: !this.pkg.keywords,
+      filter: function(words) {
+        return words.split(/\s*,\s*/g);
       }
-      var done = this.async();
+    }, {
+      name: 'includeCoveralls',
+      type: 'confirm',
+      message: 'Send coverage reports to coveralls',
+      when: this.options.coveralls === undefined,
+      default: false
+    }, {
+      name: 'travis',
+      type: 'confirm',
+      message: 'Add travis badge',
+      when: !this.options.travis,
+      default: false
+    }, {
+      name: 'webpackExample',
+      type: 'confirm',
+      message: 'Build example folder for the project',
+      when: this.options.webpackExample,
+      default: true,
+      store: true
+    }, {
+      name: 'umd',
+      type: 'confirm',
+      message: 'Build umd script',
+      when: !this.options.umd,
+      default: false
+    }];
 
-      githubUsername(this.props.authorEmail).then(username => {
-        this.prompt({
+    return this.prompt(prompts).then(props => {
+      this.props = extend(this.props, props);
+    });
+  }
+
+  _askForGithubAccount() {
+    if (this.options.githubAccount) {
+      this.props.githubAccount = this.options.githubAccount;
+      return Promise.resolve();
+    }
+
+    return githubUsername(this.props.authorEmail)
+      .then(username => username, () => '')
+      .then(username => {
+        return this.prompt({
           name: 'githubAccount',
           message: 'GitHub username or organization',
-          default: username || ''
-        }).then(function(prompt) {
+          default: username
+        }).then(prompt => {
           this.props.githubAccount = prompt.githubAccount;
-          done();
-        }.bind(this));
+        });
       });
-    }
-  },
+  }
 
-  writing: function() {
+  prompting() {
+    return this._askForModuleName()
+      .then(this._askFor.bind(this))
+      .then(this._askForGithubAccount.bind(this));
+  }
+
+  writing() {
     // Re-read the content at this point because a composed generator might modify it.
-    var currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-    var pkg = extend({
+    const pkg = extend({
       name: _.kebabCase(this.props.name),
       version: '0.0.0',
       description: this.props.description,
@@ -228,109 +232,89 @@ module.exports = generators.Base.extend({
 
     // Let's extend package.json so we're not overwriting user previous fields
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-  },
+  }
 
-  default: function() {
+  default() {
     if (this.options.travis) {
-      this.composeWith('travis', {
-        options: {
-          config: {
-            script: ['npm run test'],
-            before_install: [ // eslint-disable-line
-              'export CHROME_BIN=chromium-browser',
-              'export DISPLAY=:99.0',
-              'sh -e /etc/init.d/xvfb start'
-            ]
-          }
+      this.composeWith(require.resolve('generator-travis/generators/app'), {
+        config: {
+          script: ['npm run test'],
+          before_install: [ // eslint-disable-line
+            'export CHROME_BIN=chromium-browser',
+            'export DISPLAY=:99.0',
+            'sh -e /etc/init.d/xvfb start'
+          ]
         }
-      }, {
-        local: require.resolve('generator-travis/generators/app')
       });
     }
 
-    this.composeWith('canner-react:editorconfig', {}, {
-      local: require.resolve('../editorconfig')
+    this.composeWith(require.resolve('../editorconfig'));
+
+    this.composeWith(require.resolve('../eslint'), {
+      example: this.props.webpackExample
     });
 
-    this.composeWith('canner-react:eslint', {
-      options: {
-        example: this.props.webpackExample
-      }
-    }, {
-      local: require.resolve('../eslint')
+    this.composeWith(require.resolve('../git'), {
+      name: this.props.name,
+      githubAccount: this.props.githubAccount
     });
 
-    this.composeWith('canner-react:git', {
-      options: {
-        name: this.props.name,
-        githubAccount: this.props.githubAccount
-      }
-    }, {
-      local: require.resolve('../git')
+    this.composeWith(require.resolve('../babel'), {
+      name: this.props.name,
+      umd: this.props.umd,
+      travis: this.props.travis
     });
 
-    this.composeWith('canner-react:babel', {
-      options: {
-        name: this.props.name,
-        umd: this.props.umd,
-        travis: this.props.travis
-      }
-    }, {
-      local: require.resolve('../babel')
-    });
-
-    this.composeWith('canner-react:boilerplate', {
-      options: {
-        name: this.props.name
-      }
-    }, {
-      local: require.resolve('../boilerplate')
+    this.composeWith(require.resolve('../boilerplate'), {
+      name: this.props.name
     });
 
     if (this.props.webpackExample) {
-      this.composeWith('canner-react:webpackExample', {
-        options: {
-          projectRoot: this.options.projectRoot,
-          authorName: this.props.authorName
-        }
-      }, {
-        local: require.resolve('../webpackExample')
+      this.composeWith(require.resolve('../webpackExample'), {
+        projectRoot: this.options.projectRoot,
+        authorName: this.props.authorName
       });
     }
 
     if (this.options.license && !this.pkg.license) {
-      this.composeWith('license', {
-        options: {
-          name: this.props.authorName,
-          email: this.props.authorEmail,
-          website: this.props.authorUrl
-        }
-      }, {
-        local: require.resolve('generator-license/app')
+      this.composeWith(require.resolve('generator-license/app'), {
+        name: this.props.authorName,
+        email: this.props.authorEmail,
+        website: this.props.authorUrl
       });
     }
 
     if (!this.fs.exists(this.destinationPath('README.md'))) {
-      this.composeWith('canner-react:readme', {
-        options: {
-          name: this.props.name,
-          description: this.props.description,
-          githubAccount: this.props.githubAccount,
-          authorName: this.props.authorName,
-          authorUrl: this.props.authorUrl,
-          travis: this.props.travis,
-          coveralls: this.props.includeCoveralls,
-          content: this.options.readme,
-          example: this.props.webpackExample,
-          license: this.options.license
-        }
-      }, {
-        local: require.resolve('../readme')
+      this.composeWith(require.resolve('../readme'), {
+        name: this.props.name,
+        description: this.props.description,
+        githubAccount: this.props.githubAccount,
+        authorName: this.props.authorName,
+        authorUrl: this.props.authorUrl,
+        travis: this.props.travis,
+        coveralls: this.props.includeCoveralls,
+        content: this.options.readme,
+        example: this.props.webpackExample,
+        license: this.options.license
       });
     }
-  },
-
-  installing: function() {
-    this.npmInstall();
   }
-});
+
+  installing() {
+    this.yarnInstall();
+  }
+
+  end() {
+    this.log('Thanks for using Yeoman.');
+
+    if (this.options.travis) {
+      let travisUrl = chalk.cyan(`https://travis-ci.org/profile/${this.props.githubAccount || ''}`);
+      this.log(`- Enable Travis integration at ${travisUrl}`);
+    }
+
+    if (this.props.includeCoveralls) {
+      let coverallsUrl = chalk.cyan('https://coveralls.io/repos/new');
+      this.log(`- Enable Coveralls integration at ${coverallsUrl}`);
+    }
+  }
+}

@@ -1,11 +1,10 @@
 'use strict';
-var generators = require('yeoman-generator');
-var extend = require('lodash').merge;
+const Generators = require('yeoman-generator');
+const extend = require('lodash').merge;
 
-module.exports = generators.Base.extend({
-  constructor: function() {
-    generators.Base.apply(this, arguments);
-
+module.exports =  class extends Generators {
+  constructor(args, options) {
+    super(args, options);
     this.option('generateInto', {
       type: String,
       required: false,
@@ -18,9 +17,9 @@ module.exports = generators.Base.extend({
       required: false,
       desc: 'with example'
     });
-  },
+  }
 
-  writing: function() {
+  writing() {
     this.fs.copy(
       this.templatePath('eslintrc.js'),
       this.destinationPath(this.options.generateInto, '.eslintrc.js')
@@ -59,4 +58,4 @@ module.exports = generators.Base.extend({
       this.destinationPath(this.options.generateInto, 'package.json'), pkg
     );
   }
-});
+}

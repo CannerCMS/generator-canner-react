@@ -1,11 +1,10 @@
 'use strict';
-var generators = require('yeoman-generator');
-var originUrl = require('git-remote-origin-url');
+const Generators = require('yeoman-generator');
+const originUrl = require('git-remote-origin-url');
 
-module.exports = generators.Base.extend({
-  constructor: function() {
-    generators.Base.apply(this, arguments);
-
+module.exports =  class extends Generators {
+  constructor(args, options) {
+    super(args, options);
     this.option('generateInto', {
       type: String,
       required: false,
@@ -24,9 +23,9 @@ module.exports = generators.Base.extend({
       required: true,
       desc: 'GitHub username or organization'
     });
-  },
+  }
 
-  initializing: function() {
+  initializing() {
     this.fs.copy(
       this.templatePath('gitattributes'),
       this.destinationPath(this.options.generateInto, '.gitattributes')
@@ -43,9 +42,9 @@ module.exports = generators.Base.extend({
       }.bind(this), function() {
         this.originUrl = '';
       }.bind(this));
-  },
+  }
 
-  writing: function() {
+  writing() {
     this.pkg = this.fs.readJSON(this.destinationPath(this.options.generateInto, 'package.json'), {});
 
     var repository = '';
@@ -58,9 +57,9 @@ module.exports = generators.Base.extend({
     this.pkg.repository = this.pkg.repository || repository;
 
     this.fs.writeJSON(this.destinationPath(this.options.generateInto, 'package.json'), this.pkg);
-  },
+  }
 
-  end: function() {
+  end() {
     this.spawnCommandSync('git', ['init'], {
       cwd: this.destinationPath(this.options.generateInto)
     });
@@ -75,4 +74,4 @@ module.exports = generators.Base.extend({
       });
     }
   }
-});
+}
