@@ -16,6 +16,9 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
+  resolveLoader: {
+    moduleExtensions: ['-loader']
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -35,7 +38,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel-loader'],
+        loaders: ['babel'],
         exclude: path.resolve(__dirname, "node_modules")
       }
     ]

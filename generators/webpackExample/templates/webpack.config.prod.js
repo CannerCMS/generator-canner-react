@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'cheap-source-map',
   entry: './docs/index.js',
   output: {
     path: path.join(__dirname, 'docs/static'),
@@ -15,6 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js']
+  },
+  resolveLoader: {
+    moduleExtensions: ['-loader']
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -35,7 +38,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel-loader'],
+        loaders: ['babel'],
         exclude: path.resolve(__dirname, "node_modules")
       }
     ]

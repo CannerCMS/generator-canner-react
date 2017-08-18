@@ -25,7 +25,7 @@ describe('canner-react:webpackExample', function() {
       ]);
 
       assert.fileContent('package.json', '"babel-preset-react-hmre": "1.1.1"');
-      assert.fileContent('package.json', '"webpack-hot-middleware": "^2.12.2"');
+      assert.fileContent('package.json', '"webpack-hot-middleware": "^2.18.2"');
       assert.fileContent('package.json', '"express": "^4.14.0"');
       assert.fileContent('package.json', '"start": "node devServer.js"');
       assert.fileContent('package.json', '"lint": "eslint src test docs"');
@@ -78,7 +78,7 @@ describe('canner-react:webpackExample', function() {
       ]);
 
       assert.fileContent('other/package.json', '"babel-preset-react-hmre": "1.1.1"');
-      assert.fileContent('other/package.json', '"webpack-hot-middleware": "^2.12.2"');
+      assert.fileContent('other/package.json', '"webpack-hot-middleware": "^2.18.2"');
       assert.fileContent('other/package.json', '"express": "^4.14.0"');
       assert.fileContent('other/package.json', '"start": "node devServer.js"');
       assert.fileContent('other/package.json', '"lint": "eslint src test docs"');

@@ -59,8 +59,8 @@ module.exports =  class extends Generators {
 
     extend(pkg, {
       peerDependencies: {
-        "react": "^15.3.1",
-        "react-dom": "^15.3.1"
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1"
       },
       devDependencies: {
         "rimraf": "^2.5.4",
@@ -71,13 +71,11 @@ module.exports =  class extends Generators {
         "karma-sourcemap-loader": "^0.3.7",
         "karma-webpack": "^1.8.0",
         "chai": "^3.5.0",
-        "react-addons-test-utils": "^15.3.1",
+        "react-addons-test-utils": "^15.6.1",
         "enzyme": "^2.4.1",
-        "webpack": "2.2.0-rc.3",
+        "webpack": "3.5.5",
         "babel-loader": "^6.2.3",
-        "mocha": "^3.2.0",
-        "react": "^15.3.1",
-        "react-dom": "^15.3.1"
+        "mocha": "^3.2.0"
       },
       scripts: {
         "clean": "rimraf lib dist",

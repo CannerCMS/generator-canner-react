@@ -15,12 +15,15 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
+  resolveLoader: {
+    moduleExtensions: ['-loader']
+  },
   performance: {
     hints: false
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify("development")
@@ -31,7 +34,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel-loader'],
+        loaders: ['babel'],
         exclude: path.resolve(__dirname, "node_modules")
       }
     ]
