@@ -57,7 +57,7 @@ describe('canner-react:app', function() {
         '.gitattributes',
         'README.md',
         'src/index.js',
-        'test/generator-canner-react-test.js'
+        '__test__/generator-canner-react.test.js'
       ]);
     });
 

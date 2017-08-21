@@ -28,26 +28,12 @@ module.exports =  class extends Generators {
 
     this.fs.copy(
       this.templatePath('eslintrc'),
-      this.destinationPath(this.options.generateInto, 'test/.eslintrc')
+      this.destinationPath(this.options.generateInto, '__test__/.eslintrc')
     );
-
-    this.fs.copyTpl(
-      this.templatePath('karma.conf.js'),
-      this.destinationPath(this.options.generateInto, 'karma.conf.js'),
-      {
-        pkgSafeName: _.camelCase(this.options.name),
-        travis: this.options.travis
-      }
-    );
-
-    this.fs.copy(
-      this.templatePath('tests.webpack.js'),
-      this.destinationPath(this.options.generateInto, 'tests.webpack.js')
-    );
-
+  
     this.fs.copyTpl(
       this.templatePath('test.js'),
-      this.destinationPath(this.options.generateInto, 'test/' + this.options.name + '-test.js'), {
+      this.destinationPath(this.options.generateInto, '__test__/' + this.options.name + '.test.js'), {
         pkgName: this.options.name,
         pkgSafeName: _.camelCase(this.options.name)
       }
@@ -60,13 +46,7 @@ module.exports =  class extends Generators {
     extend(pkg, {
       devDependencies: {
         "rimraf": "^2.5.4",
-        "karma": "^1.2.0",
-        "karma-chrome-launcher": "^2.0.0",
-        "karma-cli": "^1.0.1",
-        "karma-mocha": "^1.1.1",
-        "karma-sourcemap-loader": "^0.3.7",
-        "karma-webpack": "^1.8.0",
-        "chai": "^3.5.0",
+        "jest": "^20.0.4",
         "react-addons-test-utils": "^15.6.0",
         "enzyme": "^2.4.1",
         "webpack": "3.5.5",
@@ -78,8 +58,8 @@ module.exports =  class extends Generators {
       scripts: {
         "clean": "rimraf lib dist",
         "check:src": "npm run lint && npm run test",
-        "test": "cross-env BABEL_ENV=test karma start --single-run",
-        "test:watch": "cross-env BABEL_ENV=test karma start"
+        "test": "jest",
+        "test:watch": "jest --watch"
       }
     });
 
