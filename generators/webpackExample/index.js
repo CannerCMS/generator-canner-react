@@ -65,6 +65,7 @@ module.exports =  class extends Generators {
       devDependencies: {
         "babel-preset-react-hmre": "1.1.1",
         "webpack-hot-middleware": "^2.18.2",
+        "webpack-dev-middleware": "^1.12.0",
         "express": "^4.14.0",
         "git-directory-deploy": "^1.5.1",
         "ncp": "^2.0.0"
