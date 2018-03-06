@@ -37,10 +37,10 @@ module.exports =  class extends Generators {
     );
 
     var devDep = {
-      'eslint': '^3.1.1',
-      'eslint-config-google': '^0.4.0',
-      'eslint-plugin-react': '^6.2.0',
-      'babel-eslint': '^6.1.2',
+      "eslint": "^4.18.2",
+      "eslint-plugin-flowtype": "^2.46.1",
+      "eslint-plugin-react": "^6.2.0",
+      "babel-eslint": "^8.2.2",
       'precommit-hook-eslint': '^3.0.0'
     };
 

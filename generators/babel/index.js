@@ -26,14 +26,12 @@ module.exports =  class extends Generators {
       devDependencies: {
         "babel-cli": "^6.14.0",
         "babel-core": "^6.14.0",
-        "babel-eslint": "^6.1.2",
-        "babel-loader": "^6.2.5",
-        "babel-preset-airbnb": "^2.0.0",
-        "cross-env": "^2.0.1",
-        "babel-plugin-transform-class-properties": "^6.16.0",
-        "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
-        "babel-plugin-add-module-exports": "^0.2.1",
-        "babel-runtime": "^6.11.6"
+        "babel-eslint": "^8.2.2",
+        "babel-loader": "^7.1.3",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-runtime": "^6.11.6",
       },
       scripts: {
         "clean": "rimraf lib dist",

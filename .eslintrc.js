@@ -1,10 +1,16 @@
 module.exports = {
   extends: [
-    "google",
-    "plugin:react/recommended",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
-  "settings": {},
+  "env": {
+    browser: true,
+    node: true,
+    es6: true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "rules": {
     // 0 for closing rules
     "max-len": 0,

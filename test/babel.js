@@ -13,13 +13,11 @@ describe('canner-react:babel', function() {
   it('fill package.json', function() {
     assert.fileContent('package.json', '"babel-cli": "^6.14.0"');
     assert.fileContent('package.json', '"babel-core": "^6.14.0"');
-    assert.fileContent('package.json', '"babel-eslint": "^6.1.2"');
-    assert.fileContent('package.json', '"babel-loader": "^6.2.5"');
-    assert.fileContent('package.json', '"babel-preset-airbnb": "^2.0.0"');
-    assert.fileContent('package.json', '"cross-env": "^2.0.1"');
-    assert.fileContent('package.json', '"babel-plugin-transform-class-properties": "^6.16.0"');
-    assert.fileContent('package.json', '"babel-plugin-transform-react-remove-prop-types": "^0.2.2"');
-    assert.fileContent('package.json', '"babel-plugin-add-module-exports": "^0.2.1"');
+    assert.fileContent('package.json', '"babel-eslint": "^8.2.2"');
+    assert.fileContent('package.json', '"babel-loader": "^7.1.3"');
+    assert.fileContent('package.json', '"babel-preset-flow": "^6.23.0"');
+    assert.fileContent('package.json', '"babel-preset-react": "^6.24.1"');
+    assert.fileContent('package.json', '"babel-preset-stage-0": "^6.24.1"');
 
     assert.fileContent('package.json', '"clean": "rimraf lib dist"');
     assert.fileContent('package.json', '"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"');
@@ -42,12 +40,11 @@ describe('canner-react:babel with umd', function() {
   it('fill package.json', function() {
     assert.fileContent('package.json', '"babel-cli": "^6.14.0"');
     assert.fileContent('package.json', '"babel-core": "^6.14.0"');
-    assert.fileContent('package.json', '"babel-eslint": "^6.1.2"');
-    assert.fileContent('package.json', '"babel-loader": "^6.2.5"');
-    assert.fileContent('package.json', '"babel-preset-airbnb": "^2.0.0"');
-    assert.fileContent('package.json', '"cross-env": "^2.0.1"');
-    assert.fileContent('package.json', '"babel-plugin-transform-class-properties": "^6.16.0"');
-    assert.fileContent('package.json', '"babel-plugin-transform-react-remove-prop-types": "^0.2.2"');
+    assert.fileContent('package.json', '"babel-eslint": "^8.2.2"');
+    assert.fileContent('package.json', '"babel-loader": "^7.1.3"');
+    assert.fileContent('package.json', '"babel-preset-flow": "^6.23.0"');
+    assert.fileContent('package.json', '"babel-preset-react": "^6.24.1"');
+    assert.fileContent('package.json', '"babel-preset-stage-0": "^6.24.1"');
 
     assert.fileContent('package.json', '"build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./src/index.js dist/canner-react.js"');
     assert.fileContent('package.json', '"build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./src/index.js dist/canner-react.min.js"');

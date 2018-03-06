@@ -52,8 +52,8 @@ module.exports =  class extends Generators {
         "webpack": "3.5.5",
         "babel-loader": "^6.2.3",
         "mocha": "^3.2.0",
-        "react": "^15.6.1",
-        "react-dom": "^15.6.1"
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0"
       },
       scripts: {
         "clean": "rimraf lib dist",

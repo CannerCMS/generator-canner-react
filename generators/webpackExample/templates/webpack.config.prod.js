@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'cheap-source-map',
   entry: './docs/index.js',
   output: {
     path: path.join(__dirname, 'docs/static'),
@@ -19,26 +18,11 @@ module.exports = {
   resolveLoader: {
     moduleExtensions: ['-loader']
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      compress: {
-        warnings: true
-      }
-    }),
-    new webpack.BannerPlugin('This file is created by <%= authorName %>. Built time: ' + // eslint-disable-line max-len
-      new Date())
-  ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        use: 'babel',
         exclude: path.resolve(__dirname, "node_modules")
       }
     ]

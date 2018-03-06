@@ -32,11 +32,6 @@ module.exports =  class extends Generators {
     );
 
     this.fs.copy(
-      this.templatePath('devServer.js'),
-      this.destinationPath(this.options.generateInto, 'devServer.js')
-    );
-
-    this.fs.copy(
       this.templatePath('webpack.config.dev.js'),
       this.destinationPath(this.options.generateInto, 'webpack.config.dev.js')
     );
@@ -63,15 +58,14 @@ module.exports =  class extends Generators {
 
     extend(pkg, {
       devDependencies: {
-        "babel-preset-react-hmre": "1.1.1",
-        "webpack-hot-middleware": "^2.18.2",
-        "webpack-dev-middleware": "^1.12.0",
-        "express": "^4.14.0",
+        "webpack": "^4.0.1",
+        "webpack-cli": "^2.0.10",
+        "webpack-dev-server": "^3.1.0",
         "git-directory-deploy": "^1.5.1",
         "ncp": "^2.0.0"
       },
       scripts: {
-        "start": "node devServer.js",
+        "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --mode development",
         "lint": "eslint src test docs",
         "gh-pages:clean": "rimraf _gh-pages && ncp ./docs ./_gh-pages",
         "gh-pages:build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.ghPage.js",
@@ -80,17 +74,5 @@ module.exports =  class extends Generators {
       }
     });
     this.fs.writeJSON(this.destinationPath(this.options.generateInto, 'package.json'), pkg);
-
-    // babel
-    const babelrc = this.fs.readJSON(this.destinationPath(this.options.generateInto, '.babelrc'), {});
-
-    extend(babelrc, {
-      env: {
-        development: {
-          presets: ["react-hmre"]
-        }
-      }
-    });
-    this.fs.writeJSON(this.destinationPath(this.options.generateInto, '.babelrc'), babelrc);
   }
 }

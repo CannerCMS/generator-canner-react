@@ -2,15 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './docs/index.js'
-  ],
+  entry: './docs/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/docs/static/'
   },
   resolve: {
     extensions: ['.js']
@@ -21,20 +17,11 @@ module.exports = {
   performance: {
     hints: false
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify("development")
-      }
-    })
-  ],
   module: {
-    loaders: [
+    roles: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        use: 'babel',
         exclude: path.resolve(__dirname, "node_modules")
       }
     ]

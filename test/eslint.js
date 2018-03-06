@@ -10,10 +10,10 @@ describe('canner-react:eslint', function() {
   });
 
   it('fill package.json', function() {
-    assert.fileContent('package.json', '"eslint": "^3.1.1"');
-    assert.fileContent('package.json', '"eslint-config-google": "^0.4.0"');
+    assert.fileContent('package.json', '"eslint": "^4.18.2"');
+    assert.fileContent('package.json', '"eslint-plugin-flowtype": "^2.46.1"');
     assert.fileContent('package.json', '"eslint-plugin-react": "^6.2.0"');
-    assert.fileContent('package.json', '"babel-eslint": "^6.1.2"');
+    assert.fileContent('package.json', '"babel-eslint": "^8.2.2"');
     assert.fileContent('package.json', '"precommit-hook-eslint": "^3.0.0"');
     assert.fileContent('package.json', '"lint": "eslint src test"');
     assert.jsonFileContent('package.json', {
@@ -31,10 +31,10 @@ describe('canner-react:eslint', function() {
     });
 
     it('fill env .eslintrc with generate-into option', function() {
-      assert.fileContent('other/package.json', '"eslint": "^3.1.1"');
-      assert.fileContent('other/package.json', '"eslint-config-google": "^0.4.0"');
+      assert.fileContent('other/package.json', '"eslint": "^4.18.2"');
+      assert.fileContent('other/package.json', '"eslint-plugin-flowtype": "^2.46.1"');
       assert.fileContent('other/package.json', '"eslint-plugin-react": "^6.2.0"');
-      assert.fileContent('other/package.json', '"babel-eslint": "^6.1.2"');
+      assert.fileContent('other/package.json', '"babel-eslint": "^8.2.2"');
       assert.fileContent('other/package.json', '"precommit-hook-eslint": "^3.0.0"');
       assert.fileContent('other/package.json', '"lint": "eslint src test"');
       assert.jsonFileContent('other/package.json', {
