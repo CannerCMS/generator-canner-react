@@ -1,5 +1,4 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: './docs/index.js',
@@ -14,11 +13,8 @@ module.exports = {
   resolveLoader: {
     moduleExtensions: ['-loader']
   },
-  performance: {
-    hints: false
-  },
   module: {
-    roles: [
+    rules: [
       {
         test: /\.js$/,
         use: 'babel',

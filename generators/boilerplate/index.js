@@ -50,10 +50,11 @@ module.exports =  class extends Generators {
         "react-addons-test-utils": "^15.6.0",
         "enzyme": "^2.4.1",
         "webpack": "3.5.5",
-        "babel-loader": "^6.2.3",
-        "mocha": "^3.2.0",
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0"
+        "mocha": "^3.2.0"
+      },
+      peerDependencies: {
+        "react": "^0.14.0 || ^15.0.0 || 16.x",
+        "react-dom": "^0.14.0 || ^15.0.0 || 16.x"
       },
       scripts: {
         "clean": "rimraf lib dist",

@@ -98,7 +98,7 @@ module.exports =  class extends Generators {
   _askForModuleName() {
     if (this.pkg.name || this.options.name) {
       this.props.name = this.pkg.name || _.kebabCase(this.options.name);
-      return;
+      return Promise.resolve();
     }
 
     return askName({

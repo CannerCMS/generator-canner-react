@@ -121,20 +121,20 @@ describe('canner-react:app', function() {
     });
   });
 
-  describe('--with-travis', function() {
-    before(function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
-        .withOptions({travis: true})
-        .toPromise();
-    });
+  // describe('--with-travis', function() {
+  //   before(function() {
+  //     return helpers.run(path.join(__dirname, '../generators/app'))
+  //       .withOptions({travis: true})
+  //       .toPromise();
+  //   });
 
-    it('have .travis.yml', function() {
-      assert.file('.travis.yml');
-      // assert.fileContent('.travis.yml', "- 'export CHROME_BIN=chromium-browser'");
-      // assert.fileContent('.travis.yml', "- 'export DISPLAY=:99.0'");
-      // assert.fileContent('.travis.yml', "- 'sh -e /etc/init.d/xvfb start'");
-    });
-  });
+  //   it('have .travis.yml', function() {
+  //     assert.file('.travis.yml');
+  //     // assert.fileContent('.travis.yml', "- 'export CHROME_BIN=chromium-browser'");
+  //     // assert.fileContent('.travis.yml', "- 'export DISPLAY=:99.0'");
+  //     // assert.fileContent('.travis.yml', "- 'sh -e /etc/init.d/xvfb start'");
+  //   });
+  // });
 
   // describe('--projectRoot', function() {
   //   before(function() {
