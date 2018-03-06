@@ -130,9 +130,9 @@ describe('canner-react:app', function() {
 
     it('have .travis.yml', function() {
       assert.file('.travis.yml');
-      assert.fileContent('.travis.yml', "- 'export CHROME_BIN=chromium-browser'");
-      assert.fileContent('.travis.yml', "- 'export DISPLAY=:99.0'");
-      assert.fileContent('.travis.yml', "- 'sh -e /etc/init.d/xvfb start'");
+      // assert.fileContent('.travis.yml', "- 'export CHROME_BIN=chromium-browser'");
+      // assert.fileContent('.travis.yml', "- 'export DISPLAY=:99.0'");
+      // assert.fileContent('.travis.yml', "- 'sh -e /etc/init.d/xvfb start'");
     });
   });
 
