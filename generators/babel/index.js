@@ -36,7 +36,7 @@ module.exports =  class extends Generators {
       scripts: {
         "clean": "rimraf lib dist",
         "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-        "build": "npm run build:commonjs",
+        "build": "npm run build:commonjs && npm run build:flow",
         "prepublish": "npm run clean && npm run check:src && npm run build"
       }
     });

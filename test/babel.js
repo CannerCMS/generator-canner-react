@@ -21,7 +21,7 @@ describe('canner-react:babel', function() {
 
     assert.fileContent('package.json', '"clean": "rimraf lib dist"');
     assert.fileContent('package.json', '"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"');
-    assert.fileContent('package.json', '"build": "npm run build:commonjs"');
+    assert.fileContent('package.json', '"build": "npm run build:commonjs && npm run build:flow"');
     assert.fileContent('package.json', '"prepublish": "npm run clean && npm run check:src && npm run build"');
   });
 
