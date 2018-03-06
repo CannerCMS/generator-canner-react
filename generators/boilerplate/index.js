@@ -49,7 +49,9 @@ module.exports =  class extends Generators {
         "jest": "^22.4.2",
         "react-addons-test-utils": "^15.6.0",
         "enzyme": "^2.4.1",
-        "mocha": "^3.2.0"
+        "mocha": "^3.2.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0"
       },
       peerDependencies: {
         "react": "^0.14.0 || ^15.0.0 || 16.x",
