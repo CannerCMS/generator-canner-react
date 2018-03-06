@@ -32,6 +32,7 @@ module.exports =  class extends Generators {
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "babel-runtime": "^6.11.6",
+        "cross-env": "^5.1.3"
       },
       scripts: {
         "clean": "rimraf lib dist",
