@@ -13,7 +13,6 @@
     "generators"
   ],
   "scripts": {
-    "preinstall": "use-yarn || yarn global add use-yarn",
     "lint": "eslint ./generators ./test",
     "test": "mocha --recursive",
     "test:watch": "mocha --recursive --watch",
