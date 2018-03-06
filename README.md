@@ -6,6 +6,8 @@
 That'll generate a project with all the common tools setup. This includes:
 
 - Filled `package.json` file
+- vscode settings
+- [flowtype](https://flow.org/)
 - [webpack](https://webpack.github.io/) 
 - [Babel](https://babeljs.io/) ES2015 transpiler
 - [editorconfig](http://editorconfig.org/)
@@ -17,34 +19,6 @@ That'll generate a project with all the common tools setup. This includes:
 - README
 
 ... and more!
-
-## Tree structure
-
-```
-<Project>
-	├── webpack.config.dev.js
-	├── tests.webpack.js
-	├── test
-	│   ├── <project>-test.js
-	│   └── .eslintrc
-	├── src
-	│   └── index.js
-	├── package.json
-	├── lib
-	│   └── index.js
-	├── karma.conf.js
-	├── example
-	│   ├── index.js
-	│   └── index.html
-	├── devServer.js
-	├── README.md
-	├── .gitignore
-	├── .gitattributes
-	├── .eslintrc.js
-	├── .editorconfig
-	└── .babelrc
-```
-
 
 ## Installation
 
