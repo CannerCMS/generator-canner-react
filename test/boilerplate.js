@@ -17,7 +17,6 @@ describe('canner-react:boilerplate', function() {
       '__test__/.eslintrc'
     ]);
     assert.fileContent('src/index.js', 'export default {};');
-    assert.fileContent('__test__/my-module.test.js', 'import assert from \'assert\';');
     assert.fileContent('__test__/my-module.test.js', 'describe(\'PackageName\', function() {');
   });
 });
@@ -44,7 +43,6 @@ describe('canner-react:boilerplate', function() {
       'other/__test__/.eslintrc'
     ]);
     assert.fileContent('other/src/index.js', 'export default {};');
-    assert.fileContent('other/__test__/my-module.test.js', 'import assert from \'assert\';');
     assert.fileContent('other/__test__/my-module.test.js', 'describe(\'PackageName\', function() {');
   });
 });

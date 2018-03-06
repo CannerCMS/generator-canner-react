@@ -249,6 +249,7 @@ module.exports =  class extends Generators {
     }
 
     this.composeWith(require.resolve('../editorconfig'));
+    this.composeWith(require.resolve('../vscode'));
 
     this.composeWith(require.resolve('../eslint'), {
       example: this.props.webpackExample

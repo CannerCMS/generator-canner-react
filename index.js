@@ -1,5 +1,6 @@
 module.exports = {
   app: require.resolve('./generators/app'),
+  vscode: require.resolve('./generators/vscode'),
   boilerplate: require.resolve('./generators/boilerplate'),
   editorconfig: require.resolve('./generators/editorconfig'),
   eslint: require.resolve('./generators/eslint'),

@@ -46,10 +46,9 @@ module.exports =  class extends Generators {
     extend(pkg, {
       devDependencies: {
         "rimraf": "^2.5.4",
-        "jest": "^20.0.4",
+        "jest": "^22.4.2",
         "react-addons-test-utils": "^15.6.0",
         "enzyme": "^2.4.1",
-        "webpack": "3.5.5",
         "mocha": "^3.2.0"
       },
       peerDependencies: {
