@@ -26,7 +26,7 @@ var <%= safeProjectName %> = require('<%= projectName %>');
 ## Start example server
 
 ```
-node devServer.js
+npm start
 ```
 <% } -%>
 
