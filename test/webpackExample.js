@@ -32,7 +32,7 @@ describe('canner-react:webpackExample', function() {
       assert.fileContent('package.json', '"gh-pages:build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.ghPage.js"');
       assert.fileContent('package.json', '"gh-pages:publish": "git-directory-deploy --directory _gh-pages"');
       assert.fileContent('package.json', '"gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"');
-      assert.fileContent('docs/index.html', '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/react.min.js"></script>');
+      assert.fileContent('docs/index.html', 'https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>');
 
     });
   });
@@ -83,7 +83,7 @@ describe('canner-react:webpackExample', function() {
       assert.fileContent('other/package.json', '"gh-pages:build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.ghPage.js"');
       assert.fileContent('other/package.json', '"gh-pages:publish": "git-directory-deploy --directory _gh-pages"');
       assert.fileContent('other/package.json', '"gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"');
-      assert.fileContent('other/docs/index.html', '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/react.min.js"></script>');
+      assert.fileContent('other/docs/index.html', 'https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>');
     });
   });
 
