@@ -20,8 +20,8 @@ describe('canner-react:babel', function() {
     assert.fileContent('package.json', '"babel-preset-stage-0": "^6.24.1"');
 
     assert.fileContent('package.json', '"clean": "rimraf lib dist"');
-    assert.fileContent('package.json', '"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"');
-    assert.fileContent('package.json', '"build": "npm run build:commonjs && npm run build:flow"');
+    assert.fileContent('package.json', '"build:es5": "./node_modules/.bin/babel src --out-dir lib"');
+    assert.fileContent('package.json', '"build": "npm run build:es5 && npm run build:flow"');
     assert.fileContent('package.json', '"prepublish": "npm run clean && npm run check:src && npm run build"');
   });
 
@@ -49,8 +49,8 @@ describe('canner-react:babel with umd', function() {
     assert.fileContent('package.json', '"build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./src/index.js dist/canner-react.js"');
     assert.fileContent('package.json', '"build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./src/index.js dist/canner-react.min.js"');
     assert.fileContent('package.json', '"clean": "rimraf lib dist"');
-    assert.fileContent('package.json', '"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib"');
-    assert.fileContent('package.json', '"build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min"');
+    assert.fileContent('package.json', '"build:es5": "./node_modules/.bin/babel src --out-dir lib"');
+    assert.fileContent('package.json', '"build": "npm run build:es5 && npm run build:umd && npm run build:umd:min"');
     assert.fileContent('package.json', '"prepublish": "npm run clean && npm run check:src && npm run build"');
   });
 });

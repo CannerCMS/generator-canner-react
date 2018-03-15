@@ -28,6 +28,7 @@ module.exports =  class extends Generators {
         "babel-core": "^6.14.0",
         "babel-eslint": "^8.2.2",
         "babel-loader": "^7.1.3",
+        "babel-preset-env": "^1.6.1",
         "babel-preset-flow": "^6.23.0",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
@@ -36,8 +37,8 @@ module.exports =  class extends Generators {
       },
       scripts: {
         "clean": "rimraf lib dist",
-        "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-        "build": "npm run build:commonjs && npm run build:flow",
+        "build:es5": "./node_modules/.bin/babel src --out-dir lib",
+        "build": "npm run build:es5 && npm run build:flow",
         "prepublish": "npm run clean && npm run check:src && npm run build"
       }
     });
@@ -46,7 +47,7 @@ module.exports =  class extends Generators {
       extend(pkg.scripts, {
         "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./src/index.js dist/" + this.options.name + ".js",
         "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./src/index.js dist/" + this.options.name + ".min.js",
-        "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min"
+        "build": "npm run build:es5 && npm run build:umd && npm run build:umd:min"
       });
     }
 
