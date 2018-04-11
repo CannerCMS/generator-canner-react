@@ -18,8 +18,7 @@ describe('canner-react:webpackExample', function() {
       assert.file([
         'docs/index.js',
         'webpack.config.dev.js',
-        'webpack.config.ghPages.js',
-        'webpack.config.prod.js',
+        'webpack.config.ghPage.js',
         'docs/index.html'
       ]);
 
@@ -69,8 +68,7 @@ describe('canner-react:webpackExample', function() {
       assert.file([
         'other/docs/index.js',
         'other/webpack.config.dev.js',
-        'other/webpack.config.ghPages.js',
-        'other/webpack.config.prod.js',
+        'other/webpack.config.ghPage.js',
         'other/docs/index.html'
       ]);
 

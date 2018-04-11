@@ -37,14 +37,8 @@ module.exports =  class extends Generators {
     );
 
     this.fs.copy(
-      this.templatePath('webpack.config.ghPages.js'),
-      this.destinationPath(this.options.generateInto, 'webpack.config.ghPages.js')
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('webpack.config.prod.js'),
-      this.destinationPath(this.options.generateInto, 'webpack.config.prod.js'),
-      {authorName: this.options.authorName}
+      this.templatePath('webpack.config.ghPage.js'),
+      this.destinationPath(this.options.generateInto, 'webpack.config.ghPage.js')
     );
 
     this.fs.copy(
